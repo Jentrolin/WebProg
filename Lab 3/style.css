@@ -1,0 +1,222 @@
+:root{
+    --primary:#EAF4FB;
+    --accent:#2980B9;
+    --text:#2C3E50;
+    --transition:all 0.3s ease;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Nunito',sans-serif;
+    line-height:1.6;
+    color:var(--text);
+    background:#ffffff;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+    border-radius:10px;
+}
+
+h1{
+    font-size:clamp(1.5rem,4vw,3rem);
+    color:var(--accent);
+}
+
+h2,h3{
+    margin-bottom:1rem;
+}
+
+/* HEADER */
+
+header{
+    text-align:center;
+    padding:1.5rem;
+    background:var(--primary);
+    border-bottom:3px solid var(--accent);
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:0.8rem;
+    margin-top:1rem;
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--accent);
+    font-weight:bold;
+    transition:var(--transition);
+}
+
+nav a:hover{
+    color:#1a5276;
+}
+
+/* GRID */
+
+#main-grid{
+    max-width:1200px;
+    margin:auto;
+    padding:1rem;
+    display:grid;
+    gap:1.5rem;
+
+    grid-template-areas:
+    "content"
+    "sidebar"
+    "gallery";
+}
+
+#content-area{
+    grid-area:content;
+}
+
+#sidebar-area{
+    grid-area:sidebar;
+    background:var(--primary);
+    padding:1rem;
+    border-radius:12px;
+}
+
+.gallery-grid{
+    grid-area:gallery;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1rem;
+}
+
+/* CARD */
+
+.card{
+    background:white;
+    padding:2rem;
+    border-radius:12px;
+    text-align:center;
+    border-left:5px solid var(--accent);
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+
+    animation:flipIn 0.8s both;
+    animation-delay:calc(var(--i) * 0.1s);
+
+    transition:var(--transition);
+}
+
+.card i{
+    font-size:2rem;
+    color:var(--accent);
+    margin-bottom:0.8rem;
+    display:block;
+}
+
+.card:hover{
+    background:var(--accent);
+    color:white;
+    transform:translateY(-5px);
+}
+
+.card:hover i{
+    color:white;
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:1rem;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:left;
+}
+
+th{
+    background:var(--primary);
+}
+
+/* ANIMATION */
+
+@keyframes flipIn{
+    from{
+        transform:scaleX(0);
+        opacity:0;
+    }
+    to{
+        transform:scaleX(1);
+        opacity:1;
+    }
+}
+
+/* 576px */
+
+@media (min-width:576px){
+
+    nav ul{
+        flex-direction:row;
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+}
+
+/* 768px */
+
+@media (min-width:768px){
+
+    #main-grid{
+        grid-template-columns:2fr 1fr;
+
+        grid-template-areas:
+        "content sidebar"
+        "gallery gallery";
+    }
+
+    .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+/* 1024px */
+
+@media (min-width:1024px){
+
+    .gallery-grid{
+        grid-template-columns:repeat(3,1fr);
+        grid-auto-rows:170px;   /* однакова висота рядків */
+        align-items:stretch;
+    }
+
+    .card{
+        height:100%;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        padding:1.5rem;
+    }
+
+    /* Вимога варіанту 8 виконана */
+    .card:first-child{
+        grid-row:span 2;;
+    }
+
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--color-text);
+    color: #2980B9;
+}
