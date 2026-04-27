@@ -1,0 +1,125 @@
+:root {
+    --color-primary: #EAF4FB;  /* Основний колір */
+    --color-accent: #2980B9;   /* Акцентний колір */
+    --color-bg: #ffffff;
+    --color-text: #2C3E50;
+    --spacing-main: 1.25rem;
+    --spacing-small: 0.6rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body, h1, h2, h3, p, ul, dl {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif; 
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* 3. Типографіка  */
+h1 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--color-accent); }
+h2 { font-size: 1.8rem; margin-bottom: 0.8rem; }
+p { margin-bottom: 1rem; }
+
+/* 4. Шапка та навігація (Flexbox) */
+header {
+    background-color: var(--color-primary);
+    padding: var(--spacing-main);
+    text-align: center;
+    border-bottom: 3px solid var(--color-accent);
+}
+
+nav ul {
+    display: flex; 
+    justify-content: center;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color-accent);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover, nav a:focus {
+    color: #1a5276; /* Темніший відтінок акцентного */
+    outline: 2px solid var(--color-accent); 
+}
+
+/* 5. Макет основного контенту (Flexbox) */
+main {
+    display: flex;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 var(--spacing-main);
+    gap: 2rem;
+}
+
+article {
+    flex: 1; /* Основний контент займає решту місця */
+}
+
+aside {
+    flex: 0 0 280px; /* Бічна панель фіксованої ширини */
+    background-color: var(--color-primary);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+/* 6. Стилізація таблиці */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+th, td {
+    border: 1px solid var(--color-accent);
+    padding: 10px;
+    text-align: left;
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--color-primary);
+}
+
+/* 7. Оформлення елементів взаємодії (кнопка-посилання) */
+.btn-link {
+    background-color: var(--color-accent);
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+/* 8. Адаптивність */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column; /* На мобільних все в одну колонку */
+    }
+    aside {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--color-text);
+    color: white;
+}
